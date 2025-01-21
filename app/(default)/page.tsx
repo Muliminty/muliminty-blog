@@ -2,9 +2,11 @@ import ArrowCard from "@/components/ArrowCard";
 import Container from "@/components/Container";
 import Link from "@/components/Link";
 
+import TagCloud from "@/components/TagCloud";
 import { SITE, SOCIALS } from "@/lib/config";
 
-import posts from "@/lib/data/posts";
+import type { PostItem } from "@/lib/data/posts";
+import { posts } from "@/lib/data/posts";
 import projects from "@/lib/data/projects";
 
 const homepagePosts = posts.slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
@@ -13,6 +15,7 @@ const homepageProjects = projects.slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 export default function HomePage() {
   return (
     <Container>
+      <TagCloud />
       <aside data-pagefind-ignore>
         {/* <h1 className="font-semibold text-black dark:text-white">Muliminty Blog.</h1> */}
         <div className="space-y-16">
@@ -56,7 +59,7 @@ export default function HomePage() {
               <Link href="/blog"> 查看所有文章 </Link>
             </div>
             <ul className="not-prose flex flex-col gap-4">
-              {homepagePosts.map((post, i) => (
+              {homepagePosts.map((post: PostItem, i: number) => (
                 <li key={`post-${i}`}>
                   <ArrowCard {...post} />
                 </li>

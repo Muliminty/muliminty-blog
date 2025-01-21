@@ -13,7 +13,8 @@ import PostNavigation from "@/components/PostNavigation";
 import TableOfContents from "@/components/TableOfContents";
 
 import type { Heading } from "@/components/TableOfContentsHeading";
-import posts, { postsBySlug } from "@/lib/data/posts";
+import type { PostItem } from "@/lib/data/posts";
+import { posts, postsBySlug } from "@/lib/data/posts";
 
 const readingTime = (html: string) => {
   const textOnly = html.replace(/<[^>]+>/g, "");
@@ -34,7 +35,9 @@ export default function PostViewer() {
   const post = useMemo(() => postsBySlug.get(decodedSlug)!, [postsBySlug, decodedSlug]);
 
   const prevPost = useMemo(() => {
-    const index = posts.findIndex(({ metadata: { slug } }) => slug === post?.metadata.slug);
+    const index = posts.findIndex(
+      ({ metadata: { slug } }: PostItem) => slug === post?.metadata.slug
+    );
     if (index > 0) return posts[index - 1];
   }, [post]);
 
