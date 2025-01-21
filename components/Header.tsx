@@ -13,8 +13,8 @@ export default function Header() {
           </Link>
           <nav className="flex items-center gap-1 text-sm">
             <Link href="/blog">blog</Link>
-            <span>{`/`}</span>
-            <Link href="/projects">projects</Link>
+            {/* <span>{`/`}</span> */}
+            {/* <Link href="/projects">projects</Link> */}
             {/* <span>{`/`}</span>
             <button
               id="magnifying-glass"

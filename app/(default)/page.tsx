@@ -14,9 +14,9 @@ export default function HomePage() {
   return (
     <Container>
       <aside data-pagefind-ignore>
-        <h1 className="font-semibold text-black dark:text-white">Muliminty Blog.</h1>
+        {/* <h1 className="font-semibold text-black dark:text-white">Muliminty Blog.</h1> */}
         <div className="space-y-16">
-          <section>
+          {/* <section>
             <article className="space-y-4">
               <span>
                 <p>
@@ -48,7 +48,7 @@ export default function HomePage() {
                 </p>
               </span>
             </article>
-          </section>
+          </section> */}
 
           <section className="animate space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-y-2">
@@ -64,7 +64,7 @@ export default function HomePage() {
             </ul>
           </section>
 
-          <section className="animate space-y-6">
+          {/* <section className="animate space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-y-2">
               <h2 className="font-semibold text-black dark:text-white">最近的项目</h2>
               <Link href="/projects"> 查看所有项目 </Link>
@@ -76,7 +76,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </section>
+          </section> */}
 
           {/* <section className="animate space-y-4">
             <h2 className="font-semibold text-black dark:text-white">联系我</h2>
