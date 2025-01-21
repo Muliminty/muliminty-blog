@@ -1,0 +1,72 @@
+---
+title: "MDX 语法指南"
+description: "在 Markdown 中使用交互式组件。"
+date: "2024-03-16"
+collection: "blog"
+---
+
+import Callout from "@/components/Callout";
+
+---
+
+
+MDX 是 Markdown 的扩展，允许在 Markdown 中导入 `.astro`、`.jsx`、`.tsx` 以及其他已集成的框架组件。
+
+本指南涵盖了 MDX 的基本语法、使用方法以及一些示例。
+
+---
+
+## 示例 1
+
+从 `/components` 目录导入组件。
+
+该组件接受一个 JavaScript 日期对象并将其格式化为字符串。
+
+```astro
+import DateComp from "../../../components/FormattedDate.astro";
+
+<DateComp date={new Date()} />
+```
+
+import FormattedDate from "@/components/FormattedDate";
+
+<FormattedDate date={new Date()} />
+
+---
+
+## 示例 2
+
+从内容的相对路径导入组件。
+
+该组件在按钮点击时显示一个警告。
+
+```astro
+import RelativeComponent from "./component.astro";
+
+<RelativeComponent />
+```
+
+import RelativeComponent from "./component";
+
+<RelativeComponent />
+
+---
+
+默认情况下，Micro 没有安装任何框架。如果你安装了某个框架，可以在 MDX 文件中使用该框架的组件。
+
+<Callout>
+  别忘了使用 [客户端指令](https://docs.astro.build/en/reference/directives-reference/#client-directives) 来使框架组件具有交互性。
+</Callout>
+
+```astro
+<ReactComponent client:load />
+```
+
+---
+
+## 更多链接
+
+- [MDX 语法文档](https://mdxjs.com/docs/what-is-mdx)
+- [Astro 框架集成指南](https://docs.astro.build/en/guides/integrations-guide)
+- [Astro 使用文档](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
+- [客户端指令](https://docs.astro.build/en/reference/directives-reference/#client-directives)

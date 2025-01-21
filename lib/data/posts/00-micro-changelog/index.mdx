@@ -1,0 +1,114 @@
+---
+title: "Astro Micro 的所有新功能"
+description: "Features, enhancements, and changes."
+date: "2024-05-09"
+collection: "blog"
+---
+
+import Callout from "@/components/Callout";
+
+---
+
+
+## Pagefind 搜索 🔎
+
+[Pagefind](https://pagefind.app) 是一个用于静态网站的搜索库。Micro 使用了 [Sergey Shishkin](https://github.com/shishkin) 的 [astro-pagefind](https://github.com/shishkin/astro-pagefind) 集成。该集成简化了开发过程，并且不需要对默认的构建脚本进行任何更改。
+
+按下 <kbd>/</kbd> 或 <kbd>CTRL</kbd> + <kbd>K</kbd> 打开搜索对话框。对于 Mac 用户，也可以使用 <kbd>⌘</kbd> + <kbd>K</kbd>。要关闭搜索对话框，请按 <kbd>Esc</kbd> 或点击组件外部区域。
+
+### 构建和开发
+
+<Callout type="error">
+  网站**必须**至少构建一次，以便 Pagefind 可以索引内容。
+</Callout>
+
+```bash
+# Pagefind 必须索引网站才能正常工作
+npm run build
+```
+
+在开发过程中，您可以继续使用 `npm run dev`，Pagefind 将使用上次构建的索引。
+
+---
+
+## Giscus 评论 💬
+
+[Giscus](https://giscus.app) 利用 GitHub 讨论作为评论系统。要在您自己的网站上启用 Giscus，请参阅[这里](/blog/01-getting-started#deploy-the-site)。
+
+---
+
+## Callout 组件 🆕
+
+<Callout>
+  Adipisicing et officia reprehenderit fugiat occaecat cupidatat exercitation
+  labore consequat ullamco nostrud non.
+</Callout>
+
+<Callout type="info">
+  Adipisicing et officia reprehenderit fugiat occaecat cupidatat exercitation
+  labore consequat ullamco nostrud non.
+</Callout>
+
+<Callout type="warning">
+  Adipisicing et officia reprehenderit fugiat occaecat cupidatat exercitation
+  labore consequat ullamco nostrud non.
+</Callout>
+
+<Callout type="error">
+  Adipisicing et officia reprehenderit fugiat occaecat cupidatat exercitation
+  labore consequat ullamco nostrud non.
+</Callout>
+
+---
+
+## UI 增强 🎨
+
+- 元素在聚焦时具有样式和动画
+- 在浅色模式下增加了对比度
+- 主题按钮指示当前活动主题
+- 为浅色和深色模式分别设置语法高亮主题
+- 代码块添加了复制按钮
+- 在博客文章底部添加分页
+- 创建 404 页面
+- 在文章中添加目录组件
+
+---
+
+## 其他变更
+
+- 将字体更改为 Geist Sans 和 Geist Mono
+- 将基础颜色从 "stone" 更改为 "neutral"
+- 将格式化日期的月份选项更改为 "long"
+- 整体微调了间距
+- 移除了 "work" 集合和组件
+  - 如果需要，可以从 [Astro Nano](https://github.com/markhorn-dev/astro-nano) 获取代码
+- 略微增加了链接装饰的偏移量
+- 略微加快了动画速度
+- 反转了动画
+- 确保文章使用 h1 标签作为文章标题
+- 调整了排版
+
+---
+
+## 问题 ⚠️
+
+### 当前问题
+
+- [PostNavigation.astro 在部署到 Cloudflare Pages 时无法正常工作](https://github.com/trevortylerlee/astro-micro/issues/39)
+
+### 已解决的问题
+
+- 由 [blopker](https://github.com/blopker) 修复：[启用 ViewTransitions 后，Pagefind 需要刷新才能正常工作](https://github.com/trevortylerlee/astro-micro/issues/7)
+- 由 [blopker](https://github.com/blopker) 修复：[目录链接在滚动时被 Header 遮挡](https://github.com/trevortylerlee/astro-micro/issues/4)
+- 由 [cgranier](https://github.com/cgranier) 修复：[分页链接按 slug/文件夹顺序前进](https://github.com/trevortylerlee/astro-micro/issues/26)
+- 由 [cgranier](https://github.com/cgranier) 修复：[当没有标题时隐藏目录](https://github.com/trevortylerlee/astro-micro/pull/30)
+- 由 [arastoonet](https://github.com/arastoonet) 修复：[修复 README 中的拼写错误](https://github.com/trevortylerlee/astro-micro/pull/19)
+- 由 [luciancah](https://github.com/luciancah) 修复：[防止 Pagefind 重复索引结果](https://github.com/trevortylerlee/astro-micro/issues/40)
+
+---
+
+### **翻译说明**
+- 标题、描述和日期已翻译为中文。
+- 技术术语（如 `Pagefind`、`Giscus`、`Callout` 等）保留原文，因为这些术语在中文技术社区中通常直接使用。
+- 代码块和键盘快捷键（如 `<kbd>/</kbd>`）保留原文格式。
+- 链接和 GitHub 用户名保留原文，以便用户可以直接访问相关资源。
