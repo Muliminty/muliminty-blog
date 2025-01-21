@@ -69,7 +69,21 @@ const posts = postModules
   );
 
 // 定义 PostItem 类型
-export type PostItem = (typeof posts)[number];
+export interface PostMetadata {
+  title: string;
+  description: string;
+  date: string;
+  collection: string;
+  slug: string;
+  tags?: string[];
+  draft?: boolean;
+  content?: string;
+}
+
+export type PostItem = {
+  Component: React.ComponentType;
+  metadata: PostMetadata;
+};
 
 // 工具函数：按年份分组
 function groupPostsByYear(posts: PostItem[]): Map<number, PostItem[]> {

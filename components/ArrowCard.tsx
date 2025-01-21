@@ -2,7 +2,7 @@ import Link from "@/components/Link";
 import type { PostItem } from "@/lib/data/posts";
 
 export default function ArrowCard({ metadata }: PostItem) {
-  const { title, description, slug, collection } = metadata;
+  const { title, description, slug, collection, tags } = metadata;
   return (
     // <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
     <Link
@@ -12,6 +12,18 @@ export default function ArrowCard({ metadata }: PostItem) {
       <div className="flex flex-1 flex-col truncate">
         <div className="font-semibold">{title}</div>
         <div className="text-sm">{description}</div>
+        {tags && tags.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-black/10 px-2 py-1 text-xs text-black dark:bg-white/10 dark:text-white"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

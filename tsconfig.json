@@ -27,7 +27,8 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "types": ["node"]
   },
   "include": [
     "next-env.d.ts",

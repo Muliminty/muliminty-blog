@@ -116,6 +116,19 @@ export default function PostViewer() {
         <h1 className="animate text-3xl font-semibold text-black dark:text-white">
           {post?.metadata.title || "--"}
         </h1>
+        {post?.metadata.tags && post.metadata.tags.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {post.metadata.tags.map((tag) => (
+              <a
+                key={tag}
+                href={`/blog/tags/${encodeURIComponent(tag)}`}
+                className="rounded-full bg-black/10 px-2 py-1 text-xs text-black no-underline hover:bg-black/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
 
       <TableOfContents headings={toc} className={classnames({ hidden: !Boolean(toc.length) })} />
