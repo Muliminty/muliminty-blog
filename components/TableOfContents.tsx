@@ -24,7 +24,6 @@ export interface TableOfContentsProps extends HTMLAttributes<HTMLDetailsElement>
 
 export default function TableOfContents({ headings, className, ...props }: TableOfContentsProps) {
   const toc = buildToc(headings);
-
   return (
     <details
       open
