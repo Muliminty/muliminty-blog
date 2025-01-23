@@ -43,6 +43,7 @@ article {
   @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-pre:border-none;
 }
 
 @layer utilities {
@@ -77,7 +78,8 @@ html.scrolled #back-to-top {
 
 /* shiki config */
 pre {
-  @apply border border-black/15 py-5 dark:border-white/20;
+  /* @apply py-5; */
+  background: #1e1e1e;
 }
 
 :root {
