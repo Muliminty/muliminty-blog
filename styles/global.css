@@ -122,3 +122,21 @@ pre {
 .copy-code:active {
   @apply scale-90 transition-transform;
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-200 dark:bg-neutral-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-neutral-400 dark:bg-neutral-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500 dark:bg-neutral-500;
+}
