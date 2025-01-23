@@ -148,7 +148,7 @@ export default function PostViewer() {
       <div className="animate">
         <BackToPrevious href="/blog">Back to blog</BackToPrevious>
       </div>
-      <div className="my-10 space-y-1 lg:pr-80">
+      <div className="my-10 space-y-3 lg:pr-80">
         <div className="animate flex items-center gap-1.5">
           <div className="font-base text-sm">
             {post?.metadata.date && <FormattedDate date={new Date(post.metadata.date)} />}
@@ -160,7 +160,7 @@ export default function PostViewer() {
           {post?.metadata.title || "--"}
         </h1>
         {post?.metadata.tags && post.metadata.tags.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {post.metadata.tags.map((tag) => (
               <a
                 key={tag}
@@ -178,7 +178,7 @@ export default function PostViewer() {
         <TableOfContents headings={toc} className={classnames({ hidden: !Boolean(toc.length) })} />
       </div>
 
-      {PostArticle}
+      <div className="mt-8">{PostArticle}</div>
     </Container>
   );
 }

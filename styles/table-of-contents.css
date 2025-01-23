@@ -1,5 +1,5 @@
   .table-of-contents-container {
-    @apply sticky top-20 z-10 bg-white dark:bg-black;
+    @apply sticky top-16 z-10 bg-white dark:bg-black;
   }
 
   @media (min-width: 1024px) {
@@ -21,5 +21,23 @@
   }
 
   details[open] {
-    @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
+    @apply max-h-[calc(100vh-10rem)];
+  }
+
+  details[open] > nav {
+    @apply overflow-y-auto max-h-[calc(100vh-12rem)] px-2;
+  }
+
+  @media (max-width: 1024px) {
+    details[open] > nav {
+      @apply px-3;
+    }
+    
+    details[open] > summary {
+      @apply px-4;
+    }
+  }
+
+  details[open] > summary {
+    @apply sticky top-0 bg-white dark:bg-black z-10;
   }
