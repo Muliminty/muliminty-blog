@@ -1,3 +1,0 @@
-curl -H "Authorization: token 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" \
-     -H "Accept: application/vnd.github.v3+json" \
-     https://api.github.com/repos/Muliminty/giscus-database/discussions/categories
