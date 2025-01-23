@@ -19,39 +19,29 @@ export default function HomePage() {
       <aside data-pagefind-ignore>
         {/* <h1 className="font-semibold text-black dark:text-white">Muliminty Blog.</h1> */}
         <div className="space-y-16">
-          {/* <section>
+          <section>
             <article className="space-y-4">
               <span>
                 <p>
-                  Astro Micro is an accessible theme for{" "}
-                  <Link href="https://astro.build/">Astro</Link>. It's a fork of
-                  <Link href="https://github.com/markhorn-dev">Mark Horn's</Link> popular theme{" "}
-                  <Link href="https://astro.build/themes/details/astronano/">Astro Nano</Link>. Like
-                  Nano, Micro comes with zero frameworks installed.
+                  欢迎来到我的技术博客！这里是我作为一名前端工程师记录学习、实践和思考的地方。我专注于分享前端开发中的技术细节、最佳实践以及解决问题的思路。
                 </p>
                 <p>
-                  Micro adds features like <Link href="https://pagefind.app/">Pagefind</Link> for
-                  search, <Link href="https://giscus.app">Giscus</Link> for comments, and more. For
-                  a full list of changes, see this{" "}
-                  <Link href="/blog/00-micro-changelog">blog post</Link>.
+                  博客内容涵盖 <Link href="https://reactjs.org/">React</Link>、
+                  <Link href="https://vuejs.org/">Vue</Link>、
+                  <Link href="https://www.typescriptlang.org/">TypeScript</Link>{" "}
+                  等主流技术栈，同时也会涉及一些前端工程化、性能优化和用户体验设计的经验。
                 </p>
               </span>
               <span className="animate">
                 <p>
-                  Micro still comes with everything great about Nano — full type safety, a sitemap,
-                  an RSS feed, and Markdown + MDX support. Styled with TailwindCSS and preconfigured
-                  with system, light, and dark themes.
-                </p>
-                <p>
-                  Visit
-                  <Link href="https://github.com/trevortylerlee/astro-micro">
-                    Astro Micro on GitHub
-                  </Link>
-                  to fork the repository to get started.
+                  我使用 <Link href="https://nextjs.org/">Next</Link>{" "}
+                  构建了这个博客，它轻量、高效且支持 Markdown 和
+                  MDX，非常适合技术内容的写作和分享。博客还集成了{" "}
+                  <Link href="https://giscus.app/">Giscus</Link> 评论系统，方便大家交流讨论。
                 </p>
               </span>
             </article>
-          </section> */}
+          </section>
 
           <section className="animate space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-y-2">

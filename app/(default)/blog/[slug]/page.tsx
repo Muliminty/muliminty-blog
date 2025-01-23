@@ -77,7 +77,47 @@ export default function PostViewer() {
     );
   }, [articleRef]);
 
+  // useEffect(() => {
+  //   if (!giscusRef.current) return;
+
+  //   const isDark = document.documentElement.classList.contains("dark");
+
+  //   const script = document.createElement("script");
+
+  //   script.setAttribute("src", "https://giscus.app/client.js");
+  //   script.setAttribute("data-repo", "trevortylerlee/astro-micro");
+  //   script.setAttribute("data-repo-id", "R_kgDOL_6l9Q");
+  //   script.setAttribute("data-category", "Announcements");
+  //   script.setAttribute("data-category-id", "DIC_kwDOL_6l9c4Cfk55");
+  //   script.setAttribute("data-mapping", "pathname");
+  //   script.setAttribute("data-strict", "0");
+  //   script.setAttribute("data-reactions-enabled", "1");
+  //   script.setAttribute("data-emit-metadata", "0");
+  //   script.setAttribute("data-input-position", "top");
+  //   script.setAttribute("data-theme", isDark ? "dark" : "preferred_color_scheme");
+  //   script.setAttribute("data-lang", "en");
+  //   script.setAttribute("data-loading", "lazy");
+  //   script.setAttribute("crossorigin", "anonymous");
+  //   script.setAttribute("async", "");
+
+  //   giscusRef.current.appendChild(script);
+  // }, [giscusRef]);
   useEffect(() => {
+    //     <script src="https://giscus.app/client.js"
+    //         data-repo="Muliminty/giscus-database"
+    //         data-repo-id="R_kgDONuUyXA"
+    //         data-category="muliminty-blog"
+    //         data-category-id="DIC_kwDONuUyXM4CmRAs"
+    //         data-mapping="pathname"
+    //         data-strict="0"
+    //         data-reactions-enabled="1"
+    //         data-emit-metadata="0"
+    //         data-input-position="bottom"
+    //         data-theme="preferred_color_scheme"
+    //         data-lang="zh-CN"
+    //         crossorigin="anonymous"
+    //         async>
+    // </script>
     if (!giscusRef.current) return;
 
     const isDark = document.documentElement.classList.contains("dark");
@@ -85,10 +125,10 @@ export default function PostViewer() {
     const script = document.createElement("script");
 
     script.setAttribute("src", "https://giscus.app/client.js");
-    script.setAttribute("data-repo", "trevortylerlee/astro-micro");
-    script.setAttribute("data-repo-id", "R_kgDOL_6l9Q");
-    script.setAttribute("data-category", "Announcements");
-    script.setAttribute("data-category-id", "DIC_kwDOL_6l9c4Cfk55");
+    script.setAttribute("data-repo", "Muliminty/giscus-database");
+    script.setAttribute("data-repo-id", "R_kgDONuUyXA"); // 替换为你的仓库 ID
+    script.setAttribute("data-category", "muliminty-blog"); // 替换为你的分类名称
+    script.setAttribute("data-category-id", "DIC_kwDONuUyXM4CmRAs"); // 替换为你的分类 ID
     script.setAttribute("data-mapping", "pathname");
     script.setAttribute("data-strict", "0");
     script.setAttribute("data-reactions-enabled", "1");

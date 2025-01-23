@@ -1,8 +1,8 @@
 import "@/styles/global.css";
 
 export const metadata = {
-  title: "Astro Micro",
-  description: "Astro Micro Template",
+  title: "Muliminty Blog.",
+  description: "Muliminty Blog",
   icons: [
     {
       rel: "icon",
