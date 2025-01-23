@@ -15,7 +15,6 @@ const homepageProjects = projects.slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 export default function HomePage() {
   return (
     <Container>
-      <TagCloud />
       <aside data-pagefind-ignore>
         {/* <h1 className="font-semibold text-black dark:text-white">Muliminty Blog.</h1> */}
         <div className="space-y-16">
@@ -23,25 +22,27 @@ export default function HomePage() {
             <article className="space-y-4">
               <span>
                 <p>
-                  欢迎来到我的技术博客！这里是我作为一名前端工程师记录学习、实践和思考的地方。我专注于分享前端开发中的技术细节、最佳实践以及解决问题的思路。
+                  你好，欢迎来到我的技术博客！这里是我作为前端开发者记录和分享技术心得的地方，希望能为你带来一些启发和帮助。
                 </p>
                 <p>
-                  博客内容涵盖 <Link href="https://reactjs.org/">React</Link>、
+                  我会分享一些关于 <Link href="https://reactjs.org/">React</Link>、
                   <Link href="https://vuejs.org/">Vue</Link>、
                   <Link href="https://www.typescriptlang.org/">TypeScript</Link>{" "}
-                  等主流技术栈，同时也会涉及一些前端工程化、性能优化和用户体验设计的经验。
+                  的内容，偶尔也会聊聊前端工程化、性能优化和用户体验设计。
                 </p>
               </span>
               <span className="animate">
                 <p>
-                  我使用 <Link href="https://nextjs.org/">Next</Link>{" "}
-                  构建了这个博客，它轻量、高效且支持 Markdown 和
-                  MDX，非常适合技术内容的写作和分享。博客还集成了{" "}
-                  <Link href="https://giscus.app/">Giscus</Link> 评论系统，方便大家交流讨论。
+                  这个博客是用 <Link href="https://nextjs.org/">Next.js</Link> 搭建的，支持 Markdown
+                  和 MDX，写技术文章非常方便。我还接入了{" "}
+                  <Link href="https://giscus.app/">Giscus</Link>{" "}
+                  评论系统，欢迎你留下宝贵的意见或问题！
                 </p>
               </span>
             </article>
           </section>
+
+          <TagCloud />
 
           <section className="animate space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-y-2">
