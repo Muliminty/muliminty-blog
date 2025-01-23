@@ -72,6 +72,7 @@ export default function PostViewer() {
       ).map(({ id, tagName, textContent }) => ({
         depth: Number(tagName.slice(1)),
         slug: id,
+        id: id,
         text: textContent!,
       }))
     );
