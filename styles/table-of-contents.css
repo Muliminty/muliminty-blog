@@ -2,7 +2,7 @@
   @apply z-10 bg-white/80 backdrop-blur dark:bg-black/80;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1300px) {
   .table-of-contents-container {
     @apply sticky top-16;
   }
@@ -82,7 +82,7 @@ details[open] > summary {
   @apply sticky top-0 bg-white/80 backdrop-blur dark:bg-black/80 z-10;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1300px) {
   details[open] > nav {
     @apply px-4;
   }
