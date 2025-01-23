@@ -10,8 +10,17 @@ const buildToc = (headings: Array<Heading>) => {
 
   headings.reduce((acc, heading) => {
     acc.set(heading.depth, heading);
-    if (heading.depth === 2) toc.push(heading);
-    else acc.get(heading.depth - 1)?.subheadings?.push(heading);
+    if (heading.depth === 1) {
+      toc.push(heading);
+    } else {
+      const parent = acc.get(heading.depth - 1);
+      if (parent) {
+        parent.subheadings = parent.subheadings || [];
+        parent.subheadings.push(heading);
+      } else {
+        toc.push(heading);
+      }
+    }
     return acc;
   }, new Map<number, Heading>());
 

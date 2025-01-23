@@ -1,3 +1,13 @@
+  .table-of-contents-container {
+    @apply sticky top-20 z-10 bg-white dark:bg-black;
+  }
+
+  @media (min-width: 1024px) {
+    .table-of-contents-container {
+      @apply fixed right-8 top-20 w-64 bg-transparent dark:bg-transparent;
+    }
+  }
+
   summary {
     @apply cursor-pointer rounded-t-lg px-3 py-1.5 font-medium transition-colors;
   }
@@ -8,4 +18,8 @@
 
   details[open] summary {
     @apply bg-black/5 dark:bg-white/5;
+  }
+
+  details[open] {
+    @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
   }

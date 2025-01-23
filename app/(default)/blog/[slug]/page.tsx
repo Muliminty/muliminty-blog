@@ -144,11 +144,11 @@ export default function PostViewer() {
   }, [giscusRef]);
 
   return (
-    <Container>
+    <Container className="relative">
       <div className="animate">
         <BackToPrevious href="/blog">Back to blog</BackToPrevious>
       </div>
-      <div className="my-10 space-y-1">
+      <div className="my-10 space-y-1 lg:pr-80">
         <div className="animate flex items-center gap-1.5">
           <div className="font-base text-sm">
             {post?.metadata.date && <FormattedDate date={new Date(post.metadata.date)} />}
@@ -174,7 +174,9 @@ export default function PostViewer() {
         )}
       </div>
 
-      <TableOfContents headings={toc} className={classnames({ hidden: !Boolean(toc.length) })} />
+      <div className="table-of-contents-container">
+        <TableOfContents headings={toc} className={classnames({ hidden: !Boolean(toc.length) })} />
+      </div>
 
       {PostArticle}
     </Container>
