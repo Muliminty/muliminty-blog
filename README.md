@@ -1,28 +1,11 @@
-# nextjs-astro-micro
+# Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
 
-[Astro Micro 主题](https://github.com/trevortylerlee/astro-micro) 适用于 [Next.js](https://nextjs.org/)<sub>(14+ App Router)</sub>
+Astro Micro is an accessible theme for Astro. It's a fork of [Mark Horn's](https://github.com/markhorn-dev) popular theme [Astro Nano](https://astro-nano-demo.vercel.app/). Like Nano, Micro comes with zero frameworks installed.
 
-## 😵 无法实现的功能
+Micro adds features like [Pagefind](https://pagefind.app) for search, [Giscus](https://giscus.app) for comments, and more. For a full list of changes, see this [blog post](https://astro-micro.vercel.app/blog/00-micro-changelog).
 
-未能成功实现使用 Next.js 的 pagefind 模块。
+Micro still comes with everything great about Nano — full type safety, a sitemap, an RSS feed, and Markdown + MDX support. Styled with TailwindCSS and preconfigured with system, light, and dark themes.
 
-您可以通过静态页面构建结果查看使用 pagefind 模块的示例：
+---
 
-[使用 Pagefind 为您的 Next.js 静态站点添加搜索功能](https://www.petemillspaugh.com/nextjs-search-with-pagefind)
-
-## 测试环境
-
-- debian - bookworm
-- nodejs - v20.17.0
-- npm - 10.8.3
-
-## npm 命令
-
-| 命令                   | 操作                                               |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | 安装依赖                                           |
-| `npm run dev`          | 启动本地开发服务器，地址为 `localhost:3000`        |
-| `npm run build`        | `rm -rf .next && next build`                       |
-| `npm run start`        | `next start`                                       |
-| `npm run lint`         | `next lint`                                        |
-
+![astro-micro-image](https://github.com/trevortylerlee/astro-micro/assets/49603972/ec5bc96a-3e96-4af1-a182-7711b54c5ef6)
