@@ -3,7 +3,7 @@ import { posts } from "@/lib/data/posts";
 
 export default function TagCloud() {
   const tags = posts.reduce(
-    (acc, post) => {
+    (acc: Record<string, number>, post) => {
       post.metadata.tags?.forEach((tag) => {
         acc[tag] = (acc[tag] || 0) + 1;
       });

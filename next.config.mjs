@@ -56,9 +56,6 @@ function extendsMetadataContent() {
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
-  output: "export",
-  basePath: process.env.NODE_ENV === "production" ? "/muliminty-blog" : "",
-  trailingSlash: true,
 };
 
 const withMDX = createMDX({
