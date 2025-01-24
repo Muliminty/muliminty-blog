@@ -1,5 +1,5 @@
 ---
-import TableOfContentsHeading from "./TableOfContentsHeading.astro";
+import TableOfContentsHeading from './TableOfContentsHeading.astro';
 
 // https://kld.dev/building-table-of-contents/
 const { headings } = Astro.props;
@@ -11,18 +11,80 @@ export interface Heading {
   text: string;
 }
 
+// function buildToc(headings: Heading[]) {
+//   // 初始化一个空数组来存储最终的目录
+//   const toc: Heading[] = [];
+
+//   // 使用一个Map来存储不同层级的父级标题，方便后续查找
+//   const parentHeadings = new Map();
+
+//   // 遍历传入的标题数组
+//   headings.forEach((h) => {
+//     // 创建一个新的标题对象，并初始化其子标题数组
+//     const heading = { ...h, subheadings: [] };
+
+//     // 打印当前处理的标题对象，用于调试
+//     console.log('heading: ', heading);
+
+//     // 将当前标题对象存储到parentHeadings中，键为其深度（depth）
+//     parentHeadings.set(heading.depth, heading);
+
+//     // 如果当前标题的深度为2，则将其直接添加到toc数组中
+//     if (heading.depth === 2) {
+//       toc.push(heading);
+//     } else {
+//       // 如果当前标题的深度大于2，则将其添加到其父级标题的subheadings数组中
+//       // 通过parentHeadings获取当前深度的上一级标题（即父级标题）
+//       parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+//     }
+//   });
+
+//   // 返回生成的目录
+//   return toc;
+// }
 function buildToc(headings: Heading[]) {
   const toc: Heading[] = [];
-  const parentHeadings = new Map();
+  const parentHeadings = new Map<number, Heading>();
+
   headings.forEach((h) => {
     const heading = { ...h, subheadings: [] };
+
+    // 将当前标题存储到 parentHeadings 中
     parentHeadings.set(heading.depth, heading);
+
     if (heading.depth === 2) {
+      // 深度为 2 的标题直接添加到 toc
       toc.push(heading);
     } else {
-      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+      // 获取父级标题
+      const parentDepth = heading.depth - 1;
+      const parentHeading = parentHeadings.get(parentDepth);
+
+      if (parentHeading) {
+        // 如果父级标题存在，将当前标题添加到父级标题的 subheadings
+        parentHeading.subheadings.push(heading);
+      } else {
+        // 如果父级标题不存在，可以跳过或初始化一个默认的父级标题
+        console.warn(
+          `Parent heading at depth ${parentDepth} not found for heading:`,
+          heading,
+        );
+        // 可选：初始化一个默认的父级标题
+        const defaultParent: Heading = {
+          depth: parentDepth,
+          text: `Default Parent (Depth ${parentDepth})`,
+          subheadings: [heading],
+        };
+        parentHeadings.set(parentDepth, defaultParent);
+
+        // 如果父级标题的深度为 2，将其添加到 toc
+        if (parentDepth === 2) {
+          toc.push(defaultParent);
+        }
+      }
     }
   });
+
   return toc;
 }
 ---

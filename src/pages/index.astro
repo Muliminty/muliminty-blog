@@ -1,19 +1,19 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import { SITE, HOME, SOCIALS } from "@consts";
-import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/Container.astro';
+import { SITE, HOME, SOCIALS } from '@consts';
+import ArrowCard from '@components/ArrowCard.astro';
+import Link from '@components/Link.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-const blog = (await getCollection("blog"))
+const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const projects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
+const projects: CollectionEntry<'projects'>[] = (
+  await getCollection('projects')
 )
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -23,46 +23,37 @@ const projects: CollectionEntry<"projects">[] = (
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <h1 class="font-semibold text-black dark:text-white">
-        Introducing Astro Micro 🔬
-      </h1>
+      <h1 class="font-semibold text-black dark:text-white">简介</h1>
       <div class="space-y-16">
         <section>
           <article class="space-y-4">
             <span>
               <p>
-                Astro Micro is an accessible theme for <Link
-                  href="https://astro.build/">Astro</Link
-                >. It's a fork of
-                <Link href="https://github.com/markhorn-dev">
-                  Mark Horn's
-                </Link> popular theme <Link
-                  href="https://astro.build/themes/details/astronano/"
-                  >Astro Nano</Link
-                >. Like Nano, Micro comes with zero frameworks installed.
+                你好，欢迎来到我的技术博客！这里是我作为前端开发者记录和分享技术心得的地方，希望能为你带来一些启发和帮助。
               </p>
               <p>
-                Micro adds features like <Link href="https://pagefind.app/"
-                  >Pagefind</Link
-                > for search, <Link href="https://giscus.app">Giscus</Link> for comments,
-                and more. For a full list of changes, see this <Link
-                  href="/blog/00-micro-changelog">blog post</Link
-                >.
+                我会分享一些关于 <Link href="https://reactjs.org/">React</Link
+                >、
+                <Link href="https://vuejs.org/">Vue</Link>、
+                <Link href="https://www.typescriptlang.org/">TypeScript</Link>{
+                  ' '
+                }
+                等技术的内容，偶尔也会聊聊前端工程化、性能优化和用户体验设计。
               </p>
             </span>
             <span class="animate">
               <p>
-                Micro still comes with everything great about Nano — full type
-                safety, a sitemap, an RSS feed, and Markdown + MDX support.
-                Styled with TailwindCSS and preconfigured with system, light,
-                and dark themes.
-              </p>
-              <p>
-                Visit
-                <Link href="https://github.com/trevortylerlee/astro-micro">
-                  Astro Micro on GitHub
-                </Link>
-                to fork the repository to get started.
+                这个博客是基于 <Link
+                  href="https://github.com/trevortylerlee/astro-micro"
+                  >astro-micro</Link
+                >{' '}
+                项目 fork 并搭建的，使用了 <Link
+                  href="https://docs.astro.build/zh-cn/getting-started/"
+                  >Astro</Link
+                >{' '}
+                框架，支持 Markdown 和 MDX，写技术文章非常方便。我还接入了{' '}
+                <Link href="https://giscus.app/">Giscus</Link>{' '}
+                评论系统，欢迎你留下宝贵的意见或问题！
               </p>
             </span>
           </article>
@@ -70,10 +61,8 @@ const projects: CollectionEntry<"projects">[] = (
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
-              Latest posts
-            </h2>
-            <Link href="/blog"> See all posts </Link>
+            <h2 class="font-semibold text-black dark:text-white">最新内容</h2>
+            <Link href="/blog"> 查看全部 </Link>
           </div>
           <ul class="not-prose flex flex-col gap-4">
             {
@@ -86,7 +75,7 @@ const projects: CollectionEntry<"projects">[] = (
           </ul>
         </section>
 
-        <section class="animate space-y-6">
+        <!-- <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
             <h2 class="font-semibold text-black dark:text-white">
               Recent projects
@@ -102,16 +91,13 @@ const projects: CollectionEntry<"projects">[] = (
               ))
             }
           </ul>
-        </section>
+        </section> -->
 
         <section class="animate space-y-4">
-          <h2 class="font-semibold text-black dark:text-white">
-            Let's Connect
-          </h2>
+          <h2 class="font-semibold text-black dark:text-white">联系我</h2>
           <article>
             <p>
-              If you want to get in touch with me about something or just to say
-              hi, reach out on social media or send me an email.
+              如果你想与我联系，无论是讨论某些事情还是打个招呼，都可以通过社交媒体或电子邮件联系我。
             </p>
           </article>
           <ul class="not-prose flex flex-wrap gap-2">
@@ -121,18 +107,18 @@ const projects: CollectionEntry<"projects">[] = (
                   <Link
                     href={SOCIAL.HREF}
                     external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                    aria-label={`${SITE.TITLE} 在 ${SOCIAL.NAME}`}
                   >
                     {SOCIAL.NAME}
                   </Link>
-                  {"/"}
+                  {'/'}
                 </li>
               ))
             }
             <li class="line-clamp-1">
               <Link
                 href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
+                aria-label={`发送邮件至 ${SITE.TITLE}`}
               >
                 {SITE.EMAIL}
               </Link>
