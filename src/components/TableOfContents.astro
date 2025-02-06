@@ -72,7 +72,7 @@ function buildToc(headings: Heading[]) {
         // 可选：初始化一个默认的父级标题
         const defaultParent: Heading = {
           depth: parentDepth,
-          text: `Default Parent (Depth ${parentDepth})`,
+          text: `目录 (Depth ${parentDepth})`,
           subheadings: [heading],
         };
         parentHeadings.set(parentDepth, defaultParent);
