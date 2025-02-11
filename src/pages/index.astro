@@ -18,6 +18,7 @@ const projects: CollectionEntry<'projects'>[] = (
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+console.log(projects);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>

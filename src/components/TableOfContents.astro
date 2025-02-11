@@ -9,39 +9,9 @@ export interface Heading {
   depth: number;
   slug: string;
   text: string;
+  subheadings?: Heading[];
 }
 
-// function buildToc(headings: Heading[]) {
-//   // 初始化一个空数组来存储最终的目录
-//   const toc: Heading[] = [];
-
-//   // 使用一个Map来存储不同层级的父级标题，方便后续查找
-//   const parentHeadings = new Map();
-
-//   // 遍历传入的标题数组
-//   headings.forEach((h) => {
-//     // 创建一个新的标题对象，并初始化其子标题数组
-//     const heading = { ...h, subheadings: [] };
-
-//     // 打印当前处理的标题对象，用于调试
-//     console.log('heading: ', heading);
-
-//     // 将当前标题对象存储到parentHeadings中，键为其深度（depth）
-//     parentHeadings.set(heading.depth, heading);
-
-//     // 如果当前标题的深度为2，则将其直接添加到toc数组中
-//     if (heading.depth === 2) {
-//       toc.push(heading);
-//     } else {
-//       // 如果当前标题的深度大于2，则将其添加到其父级标题的subheadings数组中
-//       // 通过parentHeadings获取当前深度的上一级标题（即父级标题）
-//       parentHeadings.get(heading.depth - 1).subheadings.push(heading);
-//     }
-//   });
-
-//   // 返回生成的目录
-//   return toc;
-// }
 function buildToc(headings: Heading[]) {
   const toc: Heading[] = [];
   const parentHeadings = new Map<number, Heading>();
@@ -61,6 +31,9 @@ function buildToc(headings: Heading[]) {
       const parentHeading = parentHeadings.get(parentDepth);
 
       if (parentHeading) {
+        if (!parentHeading.subheadings) {
+          parentHeading.subheadings = [];
+        }
         // 如果父级标题存在，将当前标题添加到父级标题的 subheadings
         parentHeading.subheadings.push(heading);
       } else {
@@ -72,7 +45,8 @@ function buildToc(headings: Heading[]) {
         // 可选：初始化一个默认的父级标题
         const defaultParent: Heading = {
           depth: parentDepth,
-          text: `目录 (Depth ${parentDepth})`,
+          slug: '',
+          text: `Default Parent (Depth ${parentDepth})`,
           subheadings: [heading],
         };
         parentHeadings.set(parentDepth, defaultParent);
