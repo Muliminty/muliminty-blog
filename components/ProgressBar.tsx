@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, Suspense } from 'react';
+import { usePathname } from 'next/navigation';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -14,9 +14,8 @@ NProgress.configure({
   speed: 500,
 });
 
-export default function ProgressBar() {
+function ProgressBarInner() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     // 路由变化时显示进度条
@@ -31,7 +30,15 @@ export default function ProgressBar() {
       clearTimeout(timer);
       NProgress.done();
     };
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
+}
+
+export default function ProgressBar() {
+  return (
+    <Suspense fallback={null}>
+      <ProgressBarInner />
+    </Suspense>
+  );
 }
