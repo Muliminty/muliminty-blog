@@ -29,22 +29,39 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const issueNumber = extractIssueNumber(params.slug);
-  const issue = await getIssue(
-    process.env.GITHUB_OWNER!,
-    process.env.GITHUB_REPO!,
-    issueNumber
-  );
 
-  if (!issue) {
+  // 如果无法提取有效的 issue number，返回默认 metadata
+  if (!issueNumber || issueNumber === 0) {
     return {
-      title: '文章未找到',
+      title: '文章未找到 - Muliminty Blog',
+      description: '该文章不存在或已被删除',
     };
   }
 
-  return {
-    title: `${issue.title} - Muliminty Blog`,
-    description: issue.body.slice(0, 160),
-  };
+  try {
+    const issue = await getIssue(
+      process.env.GITHUB_OWNER!,
+      process.env.GITHUB_REPO!,
+      issueNumber
+    );
+
+    if (!issue) {
+      return {
+        title: '文章未找到 - Muliminty Blog',
+        description: '该文章不存在或已被删除',
+      };
+    }
+
+    return {
+      title: `${issue.title} - Muliminty Blog`,
+      description: issue.body.slice(0, 160),
+    };
+  } catch (error) {
+    return {
+      title: '文章未找到 - Muliminty Blog',
+      description: '该文章不存在或已被删除',
+    };
+  }
 }
 
 export default async function PostDetailPage({ params }: PageProps) {

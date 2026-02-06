@@ -1,7 +1,57 @@
+/* ==================== 基础重置 ==================== */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+/* ==================== CSS 变量系统 ==================== */
+:root {
+  /* 霓虹绿主题色 - 核心品牌色 */
+  --neon-green: #00ff41;
+  --neon-green-glow: rgba(0, 255, 65, 0.5);
+
+  /* 暗色背景系统 */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-card: rgba(26, 26, 26, 0.8);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+
+  /* 文字颜色 */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  /* 边框和分割线 */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(0, 255, 65, 0.3);
+
+  /* 阴影系统 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-neon: 0 0 20px var(--neon-green-glow);
+
+  /* 间距系统 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* 过渡动画 */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ==================== 全局样式 ==================== */
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -11,20 +61,264 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f5f5;
-  color: #333;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  /* 防止页面闪烁 */
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--neon-green);
 }
 
 code {
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  background: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+/* ==================== NProgress 加载条样式 ==================== */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--neon-green);
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  box-shadow: var(--shadow-neon);
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px var(--neon-green), 0 0 5px var(--neon-green);
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 9999;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: solid 2px transparent;
+  border-top-color: var(--neon-green);
+  border-left-color: var(--neon-green);
+  border-radius: 50%;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+@keyframes nprogress-spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==================== 布局容器 ==================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ==================== 卡片组件 ==================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 65, 0.1);
+}
+
+/* ==================== 按钮组件 ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--neon-green);
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--neon-green);
+}
+
+.btn-primary {
+  background: var(--neon-green);
+  color: var(--bg-primary);
+  border-color: var(--neon-green);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--neon-green);
+  box-shadow: var(--shadow-neon);
+}
+
+/* ==================== 导航栏 ==================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 var(--spacing-md);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  padding: var(--spacing-xs) 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--neon-green);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--neon-green);
+  box-shadow: var(--shadow-neon);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  :root {
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+  }
+
+  .container,
+  .container-narrow {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .nav-links {
+    gap: var(--spacing-md);
+  }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ==================== 工具类 ==================== */
+.text-neon {
+  color: var(--neon-green);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.glow {
+  box-shadow: var(--shadow-neon);
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.tech-badge {
+  transition: all var(--transition-fast);
+}
+
+.tech-badge:hover {
+  border-color: var(--neon-green) !important;
+  color: var(--neon-green) !important;
+  transform: translateY(-2px);
+}
+
+/* ==================== 加载动画 ==================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }

@@ -102,5 +102,10 @@ export function generateSlug(title: string, number: number): string {
  */
 export function extractIssueNumber(slug: string): number {
   const match = slug.match(/^(\d+)-/);
-  return match ? parseInt(match[1], 10) : 0;
+  if (!match) {
+    // 尝试直接解析为数字（兼容纯数字 slug）
+    const num = parseInt(slug, 10);
+    return isNaN(num) ? 0 : num;
+  }
+  return parseInt(match[1], 10);
 }
