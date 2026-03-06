@@ -45,8 +45,19 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // 获取真实的主机名和协议（处理各种 Nginx/Docker 代理场景）
+    // 优先使用 x-forwarded-host，这是代理转发的原始 Host
+    const host =
+      request.headers.get('x-forwarded-host') || request.headers.get('host');
+    // 如果是 HTTPS 代理，x-forwarded-proto 会是 https
+    const protocol =
+      request.headers.get('x-forwarded-proto') ||
+      (request.url.startsWith('https') ? 'https' : 'http');
+
+    const origin = `${protocol}://${host}`;
+
     // 重定向回原页面，token 通过 URL 传递（客户端会保存到 localStorage）
-    const redirectUrl = new URL(state || '/', request.url);
+    const redirectUrl = new URL(state || '/', origin);
     redirectUrl.searchParams.set('token', data.access_token);
 
     return NextResponse.redirect(redirectUrl);
